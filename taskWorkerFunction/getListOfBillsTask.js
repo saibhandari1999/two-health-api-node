@@ -9,7 +9,7 @@ jsonReader("./dataBase/billsDatabase.json", (err, data) => {
         console.log(err);
         return;
     }
-    parentPort.postMessage(JSON.stringify(data.ListOfBills));
+    parentPort.postMessage(data);
 });
 
 // parentPort.postMessage(listOfBills);
