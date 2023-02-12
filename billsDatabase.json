@@ -1,0 +1,7 @@
+{
+    "ListOfBills":[
+        {
+            "patientName":"abc","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":"2000"
+        }
+    ]
+}
