@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 const port = process.env.PORT || 3000;
 
-app.get("/items", async (req,res)=>{
-  const worker = new Worker("./getListOfBillsTask.js");
+app.get("/items", async (req, res) => {
+  const worker = new Worker("./taskWorkerFunction/getListOfBillsTask.js");
   worker.on("message", (data) => {
     res.status(200).send(data);
   });
@@ -16,18 +16,13 @@ app.get("/items", async (req,res)=>{
 });
 
 app.post("/items", async (req, res) => {
-    const worker = new Worker("./createNewBillTask.js", { workerData:req.body });
-    worker.on("message", (data) => {
-      res.status(200).send(data);
-    });
-    worker.on("error", (msg) => {
-      res.status(404).send(`An error occurred: ${msg}`);
-    });
+  const worker = new Worker("./taskWorkerFunction/createNewBillTask.js", { workerData: req.body });
+  worker.on("message", (data) => {
+    res.status(200).send(data);
   });
-  
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+  worker.on("error", (msg) => {
+    res.status(404).send(`An error occurred: ${msg}`);
+  });
 });
 
 app.listen(port, () => {
