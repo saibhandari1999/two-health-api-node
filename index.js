@@ -8,7 +8,6 @@ const port = process.env.PORT || 3000;
 app.get("/items", async (req,res)=>{
   const worker = new Worker("./getListOfBillsTask.js");
   worker.on("message", (data) => {
-    // console.log(data);
     res.status(200).send(data);
   });
   worker.on("error", (msg) => {
@@ -16,19 +15,15 @@ app.get("/items", async (req,res)=>{
   });
 });
 
-app.post("/items", async (req,res)=>{
-  // console.log(req.body);
-  // res.send(req.body)
-  const worker = new Worker("./createNewBillTask.js");
-  worker.on("message", (data) => {
-    worker.postMessage(req.body)
-    console.log(data);
-    res.status(200).send(data);
+app.post("/items", async (req, res) => {
+    const worker = new Worker("./createNewBillTask.js", { workerData:req.body });
+    worker.on("message", (data) => {
+      res.status(200).send(data);
+    });
+    worker.on("error", (msg) => {
+      res.status(404).send(`An error occurred: ${msg}`);
+    });
   });
-  // worker.on("error", (msg) => {
-  //   res.status(404).send(`An error occurred: ${msg}`);
-  // });
-});
   
 
 app.get("/", (req, res) => {

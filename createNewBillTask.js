@@ -1,8 +1,22 @@
-const { parentPort } = require("worker_threads");
+const {workerData, parentPort } = require("worker_threads");
+const uuid = require('uuid');
+const fs = require("fs");
 
-parentPort.on('message',(data)=>{
-    console.log(data)
-    parentPort.postMessage("worker to main1")
-});
+const newBill={
+    "billID": uuid.v4(),
+    "patientName": workerData.patientName,
+    "patientAddress": workerData.patientAddress,
+    "hospitalname": workerData.hospitalname,
+    "dateOfService": workerData.dateOfService,
+    "billAmount": workerData.billAmount,
+}
 
-parentPort.postMessage("worker to main")
+fs.readFile('./billsDatabase.json', function (err, fileData) {
+    var fileDataJson = JSON.parse(fileData);
+    fileDataJson.ListOfBills.push(newBill);    
+    fs.writeFile('./billsDatabase.json', JSON.stringify(fileDataJson), function(err){
+      if (err) throw err;
+    });
+})
+
+parentPort.postMessage(newBill);

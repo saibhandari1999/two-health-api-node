@@ -1,16 +1,55 @@
 {
-    "ListOfBills":[
+    "ListOfBills": [
         {
-            "billID":1,"patientName":"abc","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":2000
+            "billID": 1,
+            "patientName": "abc",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan 2023",
+            "billAmount": 2000
         },
         {
-            "billID":2,"patientName":"abc1","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":1600
+            "billID": 2,
+            "patientName": "abc1",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan 2023",
+            "billAmount": 1600
         },
         {
-            "billID":3,"patientName":"abc2","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":300
+            "billID": 3,
+            "patientName": "abc2",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan 2023",
+            "billAmount": 300
         },
         {
-            "billID":4,"patientName":"abc3","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":4500
+            "billID": 4,
+            "patientName": "abc3",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan 2023",
+            "billAmount": 4500
+        },
+        {
+            "billID": "a2b59a7c-3574-4fb4-8b5f-95b3aca03ea5"
+        },
+        {
+            "billID": "7f95b3b8-3cb3-4cea-b979-81650b6eed99",
+            "patientName": "abc",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan2023",
+            "billAmount": 43646
+        },
+        {
+            "billID": "342ea055-7d02-4977-ac25-b1fb6def9488",
+            "patientName": "abc",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12 jan2023",
+            "billAmount": 3333
         }
     ]
 }
