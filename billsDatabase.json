@@ -1,7 +1,16 @@
 {
     "ListOfBills":[
         {
-            "patientName":"abc","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":"2000"
+            "billID":1,"patientName":"abc","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":2000
+        },
+        {
+            "billID":2,"patientName":"abc1","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":1600
+        },
+        {
+            "billID":3,"patientName":"abc2","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":300
+        },
+        {
+            "billID":4,"patientName":"abc3","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12 jan 2023","billAmount":4500
         }
     ]
 }

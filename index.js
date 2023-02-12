@@ -2,11 +2,8 @@ const express = require("express");
 const { Worker } = require("worker_threads");
 
 const app = express();
+app.use(express.json());
 const port = process.env.PORT || 3000;
-
-app.get("/non-blocking/", (req, res) => {
-    res.status(200).send("This page is non-blocking");
-  });
 
 app.get("/items", async (req,res)=>{
   const worker = new Worker("./getListOfBillsTask.js");
@@ -18,16 +15,21 @@ app.get("/items", async (req,res)=>{
     res.status(404).send(`An error occurred: ${msg}`);
   });
 });
-  
-app.get("/blocking", async (req, res) => {
-    const worker = new Worker("./worker.js");
-    worker.on("message", (data) => {
-      res.status(200).send(`result is ${data}`);
-    });
-    worker.on("error", (msg) => {
-      res.status(404).send(`An error occurred: ${msg}`);
-    });
+
+app.post("/items", async (req,res)=>{
+  // console.log(req.body);
+  // res.send(req.body)
+  const worker = new Worker("./createNewBillTask.js");
+  worker.on("message", (data) => {
+    worker.postMessage(req.body)
+    console.log(data);
+    res.status(200).send(data);
   });
+  // worker.on("error", (msg) => {
+  //   res.status(404).send(`An error occurred: ${msg}`);
+  // });
+});
+  
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
