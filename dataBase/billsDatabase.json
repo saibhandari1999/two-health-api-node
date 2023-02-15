@@ -1,1 +1,28 @@
-{"ListOfBills":[{"billID":"cf717286-a959-4f04-9bb0-5c9d281c99a0","patientName":"abc","patientAddress":"xyz","hospitalname":"pqr","dateOfService":"12-07-2023","billAmount":200}]}
+{
+    "ListOfBills": [
+        {
+            "billID": "24e38ccb-6045-404d-aaaa-723e9b052723",
+            "patientName": "abc",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12-07-2023",
+            "billAmount": 200
+        },
+        {
+            "billID": "f4fd5834-723f-467e-8e1e-61e47cf6ab81",
+            "patientName": "zzz",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12-07-2023",
+            "billAmount": 200
+        },
+        {
+            "billID": "4390386e-9e28-4882-86cf-d1864dbce406",
+            "patientName": "sss",
+            "patientAddress": "xyz",
+            "hospitalname": "pqr",
+            "dateOfService": "12-07-2023",
+            "billAmount": 200
+        }
+    ]
+}

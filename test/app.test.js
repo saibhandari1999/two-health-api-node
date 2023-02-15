@@ -101,6 +101,7 @@ describe('Post Items API', () => {
       }
       expect(res.text).to.contains('{"error":"Missing Information"}');
       done();
+      dbProtectionFlag=0
     });
   });
 });
