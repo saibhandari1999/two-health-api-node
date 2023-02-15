@@ -37,4 +37,5 @@ fs.readFile('./dataBase/billsDatabase.json', function (err, fileData) {
         parentPort.postMessage({createdBill:newBill,uploadStatus:"unsuccessful"});
     }
 
-})}
+})
+}

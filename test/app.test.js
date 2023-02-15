@@ -35,13 +35,20 @@ describe('Post Items API', () => {
   beforeEach(() => {
     dbProtectionFlag=0
     //dummy objects
-    jsonTestObject = {
-      "patientName": "zzz",
+    jsonTestObject1 = {
+      "patientName": "abc",
       "patientAddress": "xyz",
       "hospitalname": "pqr",
       "dateOfService": "12-07-2023",
       "billAmount": 200
-    }
+  }
+  jsonTestObject2 = {
+    "patientName": "",
+    "patientAddress": "xyz",
+    "hospitalname": "pqr",
+    "dateOfService": "12-07-2023",
+    "billAmount": 200
+}
   })
 
   afterEach(() => {
@@ -58,7 +65,7 @@ describe('Post Items API', () => {
 
 
   it('General testing', (done) => {
-    chai.request(server).post('/items').send(jsonTestObject).end((err, res) => {
+    chai.request(server).post('/items').send(jsonTestObject1).end((err, res) => {
       if (err) {
         console.log(err)
       }
@@ -72,7 +79,7 @@ describe('Post Items API', () => {
   });
 
   it('Api resonse feild testing', (done) => {
-    chai.request(server).post('/items').end((err, res) => {
+    chai.request(server).post('/items').send(jsonTestObject1).end((err, res) => {
       if (err) {
         console.log(err)
       }
@@ -84,4 +91,16 @@ describe('Post Items API', () => {
     });
   });
 
+  it('Api resonse testing for empty feild', (done) => {
+    chai.request(server).post('/items').send(jsonTestObject2).end((err, res) => {
+      if (err) {
+        console.log(err)
+      }
+      if(res.status==200){
+        dbProtectionFlag=1;
+      }
+      expect(res.text).to.contains('{"error":"Missing Information"}');
+      done();
+    });
+  });
 });
